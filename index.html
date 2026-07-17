@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Icha ❤️</title>
+    <!-- Tailwind CSS for modern responsive utility styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for beautiful romantic typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for adorable vector icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #ffeef8 0%, #ffd1e8 100%);
+            overflow: hidden;
+        }
+        .romantic-font {
+            font-family: 'Pacifico', cursive;
+        }
+        /* Custom floating heart animations */
+        @keyframes float-up {
+            0% {
+                transform: translateY(100vh) scale(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-20vh) scale(1) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        .floating-heart {
+            position: absolute;
+            bottom: -50px;
+            pointer-events: none;
+            animation: float-up 6s linear infinite;
+        }
+        /* Smooth transitions for interactive components */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 182, 193, 0.5);
+            box-shadow: 0 10px 30px rgba(244, 63, 94, 0.15);
+        }
+        /* Pulse animations for cute highlights */
+        @keyframes soft-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .pulse-heart {
+            animation: soft-pulse 1.5s infinite ease-in-out;
+        }
+        /* Runaway transition for No button */
+        #btn-no {
+            transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            touch-action: none;
+        }
+    </style>
+</head>
+<body class="h-full flex items-center justify-center relative select-none">
+
+    <!-- Background Canvas for Interactive Hearts -->
+    <canvas id="heartCanvas" class="absolute inset-0 w-full h-full pointer-events-none z-0"></canvas>
+
+    <!-- Background Music Toggle (Cute Audio Synthesizer) -->
+    <div class="absolute top-4 right-4 z-50">
+        <button id="btn-music" class="w-12 h-12 rounded-full bg-pink-500 text-white flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-all">
+            <i id="music-icon" class="fa-solid fa-volume-mute"></i>
+        </button>
+    </div>
+
+    <!-- Main Container for App Stages -->
+    <main class="w-full max-w-md px-6 z-10">
+
+        <!-- STAGE 1: THE ROMANTIC ENVELOPE -->
+        <div id="stage-envelope" class="w-full flex flex-col items-center text-center">
+            <div class="glass-card rounded-3xl p-8 w-full transform transition-all duration-700 hover:scale-[1.02]">
+                <div class="w-24 h-24 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner pulse-heart">
+                    <i class="fa-solid fa-envelope-open-text text-pink-500 text-4xl"></i>
+                </div>
+                <h1 class="text-2xl font-bold text-gray-800 mb-2">Ada surat spesial untukmu!</h1>
+                <p class="text-pink-600 romantic-font text-3xl mb-8">Halo, Ichaa ✨</p>
+                
+                <button id="btn-open-envelope" class="w-full py-4 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-bold rounded-2xl shadow-lg hover:shadow-pink-400/50 transition-all duration-300 transform active:scale-95 text-lg flex items-center justify-center gap-3">
+                    <span>Buka Surat</span>
+                    <i class="fa-solid fa-heart animate-ping text-sm"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- STAGE 2: THE PROPOSAL QUESTION -->
+        <div id="stage-question" class="hidden w-full flex flex-col items-center text-center relative min-h-[400px] justify-center">
+            <div class="glass-card rounded-3xl p-8 w-full transition-all duration-500">
+                <!-- Cute Mascot/Icon Area -->
+                <div class="relative w-36 h-36 mx-auto mb-6">
+                    <div class="absolute inset-0 bg-pink-100 rounded-full animate-ping opacity-30"></div>
+                    <div class="relative w-36 h-36 bg-white rounded-full flex items-center justify-center shadow-inner overflow-hidden border-4 border-pink-200">
+                        <!-- Custom animated beautiful SVG Heart -->
+                        <svg class="w-20 h-20 text-rose-500 fill-current pulse-heart" viewBox="0 0 24 24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <h2 class="text-gray-700 font-bold text-lg tracking-wider uppercase mb-2">Pertanyaan Penting</h2>
+                <!-- The Main Question -->
+                <h1 class="text-3xl font-bold text-gray-800 leading-snug mb-8 px-2">
+                    Apakah kamu mau jadi pacar aku, <span class="romantic-font text-rose-500 block text-4xl mt-2 animate-bounce">ichaa?</span> ❤️
+                </h1>
+
+                <!-- Cute Interactive Message Box -->
+                <div id="funny-comment" class="text-sm font-semibold text-pink-500 mb-6 h-6 opacity-0 transition-opacity duration-300">
+                    Beneran mau pencet itu? 🥹
+                </div>
+
+                <!-- Action Buttons Container -->
+                <div class="relative w-full flex flex-row justify-center items-center gap-4 min-h-[120px]">
+                    <!-- YES BUTTON (will grow when No is clicked/hovered) -->
+                    <button id="btn-yes" class="px-8 py-4 bg-gradient-to-r from-emerald-400 to-teal-500 text-white font-bold text-lg rounded-2xl shadow-lg hover:shadow-teal-400/50 hover:scale-105 active:scale-95 transition-all duration-300 z-10 min-w-[120px]">
+                        Ya! 💕
+                    </button>
+
+                    <!-- NO BUTTON (will run away dynamically) -->
+                    <button id="btn-no" class="px-6 py-3 bg-gray-200 text-gray-700 font-bold text-md rounded-2xl border border-gray-300 shadow-sm transition-all duration-200 cursor-pointer whitespace-nowrap z-20">
+                        Tidak 💔
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- STAGE 3: THE CELEBRATION (SUCCESS SCREEN) -->
+        <div id="stage-success" class="hidden w-full flex flex-col items-center text-center">
+            <div class="glass-card rounded-3xl p-8 w-full border-2 border-pink-300">
+                <div class="w-24 h-24 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner pulse-heart">
+                    <i class="fa-solid fa-face-kiss-wink-heart text-pink-500 text-5xl"></i>
+                </div>
+                
+                <h1 class="romantic-font text-4xl text-rose-500 mb-2">Yeay! I Love You!</h1>
+                <p class="text-gray-700 font-semibold mb-6">Kamu resmi jadi pacarku sekarang! 🥰</p>
+
+                <!-- Love Letter Content -->
+                <div class="bg-white/80 rounded-2xl p-6 text-left border border-pink-100 mb-6 max-h-64 overflow-y-auto shadow-inner text-gray-600 leading-relaxed text-sm">
+                    <p class="mb-3 font-bold text-rose-500 romantic-font text-lg">Hai Icha Sayang,</p>
+                    <p class="mb-3">Makasih banyak ya udah mau nerima aku jadi pacarmu. Mulai hari ini</p>
+                    <p class="mb-3">Aku janji bakal berusaha bikin kamu selalu tersenyum, dengerin cerita kamu setiap hari, dan selalu ada di sampingmu baik senang maupun sedih.</p>
+                    <p class="font-bold text-right text-rose-500 romantic-font text-lg mt-4">— Pacar Barumu ❤️</p>
+                </div>
+
+                <!-- Custom WhatsApp Redirection for fun -->
+                <button id="btn-whatsapp" class="w-full py-4 bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold rounded-2xl shadow-lg transition-all duration-300 transform active:scale-95 text-md flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                    <span>Kirim Kabar ke WhatsApp-ku</span>
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        // DOM Elements
+        const stageEnvelope = document.getElementById('stage-envelope');
+        const stageQuestion = document.getElementById('stage-question');
+        const stageSuccess = document.getElementById('stage-success');
+        
+        const btnOpenEnvelope = document.getElementById('btn-open-envelope');
+        const btnYes = document.getElementById('btn-yes');
+        const btnNo = document.getElementById('btn-no');
+        const btnWhatsapp = document.getElementById('btn-whatsapp');
+        const btnMusic = document.getElementById('btn-music');
+        const musicIcon = document.getElementById('music-icon');
+        const funnyComment = document.getElementById('funny-comment');
+
+        // Audio System State
+        let audioCtx = null;
+        let isMusicPlaying = false;
+        let melodyInterval = null;
+        let synthOscillators = [];
+
+        // No-button interaction state
+        let noAttempts = 0;
+        let scaleFactor = 1.0;
+
+        // Custom Funny comments when Icha tries to press 'Tidak'
+        const funnyMessages = [
+            "Eits, gak bisa dipencet! 😜",
+            "Yakin nih mau nolak? 🥺",
+            "Pikir-pikir lagi yuk... 💕",
+            "Tombolnya gamau kamu klik tidak! 👉👈",
+            "Kamu gak punya pilihan lain selain YA! 😂",
+            "Icha sayang, klik YA aja yuk!",
+            "Jangan sedih, aku bakal sayang terus!"
+        ];
+
+        // Custom Melodic Synthesizer using Web Audio API (Lofi/Cute Romantic chords)
+        function initAudio() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+        }
+
+        function playTone(frequency, duration, type = 'sine', volume = 0.1) {
+            if (!audioCtx || audioCtx.state === 'suspended') return;
+            
+            const osc = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            
+            osc.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+            
+            osc.type = type;
+            osc.frequency.setValueAtTime(frequency, audioCtx.currentTime);
+            
+            gainNode.gain.setValueAtTime(volume, audioCtx.currentTime);
+            // Exponential decay for soft sweet romantic sounds
+            gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+            
+            osc.start();
+            osc.stop(audioCtx.currentTime + duration);
+        }
+
+        // Beautiful sweet arpeggio loop for cute background music
+        function startLoveTheme() {
+            if (isMusicPlaying) return;
+            initAudio();
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            
+            isMusicPlaying = true;
+            musicIcon.className = "fa-solid fa-volume-high animate-bounce";
+            btnMusic.classList.add('bg-rose-500');
+            btnMusic.classList.remove('bg-pink-500');
+
+            // Sweet C Major / F Major progression (C - G - Am - F)
+            const chords = [
+                [261.63, 329.63, 392.00, 523.25], // C Major
+                [392.00, 493.88, 587.33, 783.99], // G Major
+                [220.00, 329.63, 440.00, 523.25], // A Minor
+                [349.23, 440.00, 523.25, 698.46]  // F Major
+            ];
+
+            let step = 0;
+            melodyInterval = setInterval(() => {
+                const chord = chords[Math.floor(step / 4) % chords.length];
+                const note = chord[step % chord.length];
+                // Layer a soft wave tone
+                playTone(note, 1.5, 'triangle', 0.12);
+                // Sparkle high-pitched note
+                if (step % 2 === 0) {
+                    playTone(note * 2, 0.8, 'sine', 0.05);
+                }
+                step++;
+            }, 600);
+        }
+
+        function stopLoveTheme() {
+            isMusicPlaying = false;
+            clearInterval(melodyInterval);
+            musicIcon.className = "fa-solid fa-volume-mute";
+            btnMusic.classList.add('bg-pink-500');
+            btnMusic.classList.remove('bg-rose-500');
+        }
+
+        // Toggle music interaction
+        btnMusic.addEventListener('click', () => {
+            initAudio();
+            if (isMusicPlaying) {
+                stopLoveTheme();
+            } else {
+                startLoveTheme();
+            }
+        });
+
+        // HTML5 Canvas particles animation (Floating Hearts and sparkles)
+        const canvas = document.getElementById('heartCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class HeartParticle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = canvas.height + Math.random() * 100;
+                this.size = Math.random() * 12 + 6;
+                this.speedX = Math.random() * 1.5 - 0.75;
+                this.speedY = -(Math.random() * 2 + 1);
+                this.color = `rgba(244, ${Math.floor(Math.random() * 80 + 100)}, ${Math.floor(Math.random() * 120 + 130)}, ${Math.random() * 0.4 + 0.3})`;
+                this.rotation = Math.random() * Math.PI * 2;
+                this.rotationSpeed = Math.random() * 0.02 - 0.01;
+            }
+
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation);
+                ctx.beginPath();
+                ctx.fillStyle = this.color;
+                
+                // Drawing smooth customized canvas heart
+                const d = this.size;
+                ctx.moveTo(0, -d / 2);
+                ctx.bezierCurveTo(d / 2, -d, d, -d / 3, 0, d);
+                ctx.bezierCurveTo(-d, -d / 3, -d / 2, -d, 0, -d / 2);
+                
+                ctx.fill();
+                ctx.restore();
+            }
+
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                this.rotation += this.rotationSpeed;
+                if (this.y < -30) {
+                    this.y = canvas.height + 30;
+                    this.x = Math.random() * canvas.width;
+                }
+            }
+        }
+
+        // Populate system background particles
+        for (let i = 0; i < 40; i++) {
+            particles.push(new HeartParticle());
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        // Make the 'Tidak' button run away on mouseover or touch
+        function relocateNoButton(event) {
+            // Prevent event defaults if touch triggered to avoid double action
+            if (event.type === 'touchstart') {
+                event.preventDefault();
+            }
+
+            // Play a funny synth click/sound
+            initAudio();
+            playTone(150 + (noAttempts * 50), 0.2, 'square', 0.05);
+
+            // Increment count to scale the YES button and trigger fun messages
+            noAttempts++;
+            scaleFactor += 0.25;
+            btnYes.style.transform = `scale(${scaleFactor})`;
+
+            // Change cute commentary text
+            const msgIndex = Math.floor(Math.random() * funnyMessages.length);
+            funnyComment.innerText = funnyMessages[msgIndex];
+            funnyComment.style.opacity = '1';
+
+            // Calculate boundary coordinates safely
+            const cardElement = btnNo.parentElement;
+            const rect = cardElement.getBoundingClientRect();
+            
+            // Generate random coordinate shifts within container/viewport boundary
+            const maxX = Math.min(rect.width - btnNo.offsetWidth - 20, 250);
+            const minX = -Math.min(rect.width / 2 - 20, 100);
+            const maxY = 120;
+            const minY = -120;
+
+            const newX = Math.random() * (maxX - minX) + minX;
+            const newY = Math.random() * (maxY - minY) + minY;
+
+            // Apply style with safety coordinates
+            btnNo.style.position = 'absolute';
+            btnNo.style.left = `${newX}px`;
+            btnNo.style.top = `${newY}px`;
+        }
+
+        // Attach listeners to avoid the 'Tidak' click
+        btnNo.addEventListener('mouseover', relocateNoButton);
+        btnNo.addEventListener('touchstart', relocateNoButton);
+        btnNo.addEventListener('click', (e) => {
+            e.preventDefault();
+            relocateNoButton(e);
+        });
+
+        // Stage Transits
+        btnOpenEnvelope.addEventListener('click', () => {
+            initAudio();
+            startLoveTheme();
+            
+            stageEnvelope.classList.add('hidden');
+            stageQuestion.classList.remove('hidden');
+            
+            // Sweet notification sound
+            playTone(523.25, 0.15, 'sine', 0.1);
+            setTimeout(() => playTone(659.25, 0.3, 'sine', 0.1), 150);
+        });
+
+        // Yes Button Action (Confetti & Succes transition)
+        btnYes.addEventListener('click', () => {
+            initAudio();
+            // Intense celebration success chords
+            playTone(523.25, 0.2, 'sine', 0.1);
+            setTimeout(() => playTone(659.25, 0.2, 'sine', 0.1), 150);
+            setTimeout(() => playTone(783.99, 0.2, 'sine', 0.1), 300);
+            setTimeout(() => playTone(1046.50, 0.5, 'sine', 0.15), 450);
+
+            // Boost particle count for visual explosion of hearts
+            for (let i = 0; i < 60; i++) {
+                const burstHeart = new HeartParticle();
+                burstHeart.y = Math.random() * canvas.height * 0.8;
+                burstHeart.speedY = -(Math.random() * 5 + 3);
+                particles.push(burstHeart);
+            }
+
+            stageQuestion.classList.add('hidden');
+            stageSuccess.classList.remove('hidden');
+        });
+// WhatsApp trigger message
+btnWhatsapp.addEventListener('click', () => {
+    const phone = "6281322789164"; // gunakan kode negara 62, tanpa tanda +
+    const message = encodeURIComponent("Hai Sayang! Aku udah dapet pesan cintanya, dan tentu saja jawaban aku adalah: IYA! Aku mau jadi pacarmu! ❤️🥰");
+
+    const waUrl = `https://wa.me/${phone}?text=${message}`;
+
+    window.open(waUrl, '_blank');
+});
+
+        // Initialize Audio Context on first interaction
+        document.body.addEventListener('click', () => {
+            initAudio();
+        }, { once: true });
+    </script>
+</body>
+</html>
